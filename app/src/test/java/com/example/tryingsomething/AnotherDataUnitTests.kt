@@ -2,13 +2,11 @@ package com.example.tryingsomething
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
-import com.example.tryingsomething.dto.Runner
+import com.example.tryingsomething.dto.Another
 import com.example.tryingsomething.service.RunnerService
 import com.example.tryingsomething.ui.main.MainViewModel
-import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.verify
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -20,7 +18,7 @@ import org.junit.rules.TestRule
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class RunnerDataUnitTests {
+class AnotherDataUnitTests {
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
@@ -30,8 +28,8 @@ class RunnerDataUnitTests {
 
     @Test
     fun confirmEasternRedbud_outputsEasterRedbud() {
-        var runner : Runner = Runner(1, "", "Tajce")
-        assertEquals("Tajce", runner.toString())
+        var another : Another = Another(1, "", "Tajce")
+        assertEquals("Tajce", another.toString())
     }
 
     @Test
@@ -46,12 +44,12 @@ class RunnerDataUnitTests {
     }
 
     private fun createMockData() {
-        var allRunnersLiveData = MutableLiveData<ArrayList<Runner>>()
-        var allRunners = ArrayList<Runner>()
+        var allRunnersLiveData = MutableLiveData<ArrayList<Another>>()
+        var allRunners = ArrayList<Another>()
         //create and add mock runners
-        var redbud = Runner(1, "Tajce","Trajceski")
+        var redbud = Another(1, "Tajce","Trajceski")
         allRunners.add(redbud)
-        var anotherRunner = Runner(2,"Tajce", "Veleski")
+        var anotherRunner = Another(2,"Tajce", "Veleski")
         allRunners.add(anotherRunner)
 
         allRunnersLiveData.postValue(allRunners)
